@@ -31,32 +31,6 @@ This project includes the following main features:
 - **ECharts**: A JavaScript library for creating interactive and customizable data visualizations.
 - **Java**: The primary programming language used to implement the solution.
 
-## Project Structure
-
-.
-├── data_scraping
-│   ├── HotelDataScraper.java    # Main scraper code
-│   └── utils
-│       └── StringUtil.java      # Utility classes for data extraction
-├── data_cleaning
-│   ├── DataCleaner.java        # Logic for cleaning scraped data
-│   └── models
-│       └── HotelCity.java      # Data model for hotel cities
-├── data_storage
-│   ├── HBaseUtil.java          # Utility class for interacting with HBase
-│   └── config
-│       └── HBaseConfig.java    # Configuration for HBase setup
-├── data_analysis
-│   ├── MapReduceJobs.java      # Hadoop MapReduce jobs for data analysis
-│   └── analysis
-│       └── HotelPriceAnalysis.java  # Logic for analyzing hotel prices
-├── data_visualization
-│   ├── charts
-│   │   ├── price_distribution.js    # ECharts visualization for price distribution
-│   │   └── room_type_stats.js       # ECharts visualization for room type stats
-│   └── index.html              # Main HTML file to render the visualizations
-└── README.md                   # Project documentation (this file)
-
 
 ## Installation and Usage
 
