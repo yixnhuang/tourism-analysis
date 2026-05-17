@@ -2,77 +2,50 @@
 
 ## Project Overview
 
-This project focuses on big data analysis and application for tourism websites, specifically for scraping, cleaning, storing, analyzing, and visualizing hotel data from travel sites (such as Ctrip). The goal is to extract meaningful insights from a vast amount of unstructured data, allowing users to make data-driven decisions when planning their travels. The system implements data collection using web scraping, cleaning, storage with HBase, data analysis with MapReduce, and data visualization with ECharts.
+This project focuses on big data analysis and application for tourism websites, specifically on scraping, cleaning, storing, analyzing, and visualizing hotel data from travel platforms (such as Ctrip).
 
-## Features
+The goal is to extract meaningful insights from large-scale unstructured data and support data-driven decision-making for travel planning.
 
-This project includes the following main features:
+This project was developed as part of the Big Data Technology course at university.
 
-1. **Data Scraping**: 
-   - Uses Jsoup to scrape hotel data from tourism websites (such as Ctrip), including city information, hotel names, prices, ratings, and more.
-  
-2. **Data Cleaning**: 
-   - Cleans the scraped HTML data using Jsoup, removing irrelevant elements and structuring the data for further analysis.
+## System Pipeline
 
-3. **Data Storage**: 
-   - Utilizes HBase to store structured hotel data in a distributed, column-based database, taking advantage of HBase's scalability and performance.
+1. Data Scraping  
+   Uses Jsoup to extract hotel information from tourism websites, including city, hotel name, price, rating, and other attributes.
 
-4. **Data Analysis**: 
-   - Implements data analysis using Hadoop's MapReduce, including tasks like calculating the average hotel price by city and performing word frequency analysis on hotel reviews.
+2. Data Cleaning  
+   Processes raw HTML data, removes noise, and structures it for analysis.
 
-5. **Data Visualization**: 
-   - Uses ECharts to create interactive visualizations such as hotel price distribution, average price comparison, and room type statistics.
+3. Data Storage  
+   Uses HBase for distributed column-based storage.
+
+4. Data Analysis  
+   Uses Hadoop MapReduce to perform batch analysis, including:
+   - Average hotel price per city
+   - Word frequency analysis on reviews
+
+5. Data Visualization  
+   Uses ECharts to build interactive visualizations such as price distribution and city comparisons.
 
 ## Technologies Used
 
-- **Jsoup**: A Java library for HTML parsing and web scraping.
-- **HBase**: A distributed, column-oriented NoSQL database for storing structured data.
-- **Hadoop**: A framework for distributed storage and processing of large data sets, used for MapReduce jobs.
-- **ECharts**: A JavaScript library for creating interactive and customizable data visualizations.
-- **Java**: The primary programming language used to implement the solution.
+Java  
+Jsoup  
+Hadoop MapReduce  
+HBase  
+ECharts
 
+## Purpose
 
-## Installation and Usage
+This repository is a coursework project for learning and demonstration purposes.
 
-### Prerequisites
-
-- Java 8 or higher
-- HBase 2.0 or higher
-- Hadoop 3.x
-- Maven (for dependency management)
-- ECharts (for visualization)
-
-## Contributing
-
-Contributions to this project are welcome! If you have suggestions, bug fixes, or improvements, feel free to fork this repository and submit a pull request.
-
-### Steps to Contribute:
-1. Fork this repository.
-2. Create a new branch (`git checkout -b feature-xyz`).
-3. Commit your changes (`git commit -am 'Add new feature'`).
-4. Push to the branch (`git push origin feature-xyz`).
-5. Create a new pull request.
+It is intended for academic use and personal portfolio only.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This repository is released under a custom restrictive academic license.
 
-## Acknowledgments
+The license permits academic and personal study only.  
+Redistribution, commercial use, and public release of derivative works are strictly prohibited without prior written permission from the author.
 
-- Special thanks to the creators of [ECharts](https://echarts.apache.org/) and [Jsoup](https://jsoup.org/).
-- Hadoop and HBase communities for providing the necessary big data tools.
-- The tourism website data source for providing rich datasets for analysis.
-
-### Key Sections:
-
-1. **Project Overview**: Briefly explains the objective of the project.
-2. **Features**: Describes the key functionalities that the project implements.
-3. **Technologies Used**: Lists the technologies used in the project.
-4. **Project Structure**: Provides a hierarchical view of the project folder structure.
-5. **Installation and Usage**: Explains the setup process and how to run the different parts of the system.
-6. **Example Output**: Describes the expected output of the system, such as the visualizations.
-7. **Contributing**: Provides guidelines for contributing to the project.
-8. **License**: Mentions the project's open-source license.
-9. **Acknowledgments**: Credits to the libraries or tools used in the project.
-
-This should provide a solid foundation for your GitHub README. Feel free to modify or expand on this template to better suit your project specifics!
+See the LICENSE file for full details.
