@@ -43,9 +43,20 @@ It is intended for academic use and personal portfolio only.
 
 ## License
 
-This repository is released under a custom restrictive academic license.
+This project is distributed under the:
 
-The license permits academic and personal study only.  
-Redistribution, commercial use, and public release of derivative works are strictly prohibited without prior written permission from the author.
+ACADEMIC ATTRIBUTION AND RESTRICTED USE LICENSE  
+Version 1.0.0
 
-See the LICENSE file for full details.
+See the `LICENSE` file for full license terms.
+
+## Attribution
+
+If you use, modify, reference, or redistribute this project or any substantial portion of it, you must provide clear attribution:
+
+> Based on work by Yixuan Huang
+
+## Author
+
+Yixuan Huang  
+Email: `yixnhuang@gmail.com"
