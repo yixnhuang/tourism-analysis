@@ -5,23 +5,23 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 /**
- * 解析并提取HTML元素
+ * Parse and extract HTML elements
  */
 public class b_ParseElement {
 
-    //获取所有链接
+    //Get all links
     public static Elements getLinks(Document doc) {
         Elements links = doc.select("link[href]");
         return links;
     }
 
-    //获取第一个class为“pop_attention”的div
+    //Get the first div whose class is "pop_attention"
     public static Element getDiv(Document doc) {
         Element first = doc.select("div.pop_attention").first();
         return first;
     }
 
-    //获取所有li之后的i标签
+    //Get the i elements nested under all li elements
     public static Elements getI(Document doc) {
         Elements resultLinks = doc.select("li > i");
         return resultLinks;

@@ -1,0 +1,19 @@
+target/
+*.class
+*.jar
+
+# Collected and generated data
+src/main/resources/*.txt
+
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+.env
+.env.*
+*.log
+*.tmp
+.DS_Store
+Thumbs.db

@@ -3,7 +3,7 @@ public class Hotel {
     private String id;
     private String name;
     /**
-     * 最低价格信息
+     * Lowest-price information
      */
     private double price;
     private double lat;
@@ -13,11 +13,11 @@ public class Hotel {
     private String address;
     private double score;
     /**
-     * 点评分数
+     * Review score
      */
     private int dpscore;
     /**
-     * 点评数量
+     * Review count
      */
     private int dpcount;
     private String star;

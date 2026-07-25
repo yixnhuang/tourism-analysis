@@ -10,7 +10,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.safety.Whitelist;
 
 /**
- * 为获取酒店数据清理无用数据
+ * Remove irrelevant content before extracting hotel data
  */
 public class a_CleanDataForHotels {
 
@@ -30,7 +30,7 @@ public class a_CleanDataForHotels {
     public static void main(String[] args) throws IOException {
 
         String filePath = "src/main/resources/hotels.ctrip.com_domestic-city-hotel.txt";
-        //通过filePath文件路径获取Docment对象
+        //Load the Document object from filePath
         Document doc = GetDocument.getDoc(filePath);
         List<String> cleanHTML = a_CleanDataForHotels.cleanHTML(doc);
         for (String s : cleanHTML) {

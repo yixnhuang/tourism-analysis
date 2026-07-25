@@ -18,13 +18,13 @@ import java.util.Map;
  */
 public class chartsData {
     /**
-     * 获取前number个澳门酒店名称和价格
-     * @param number 指定获取几个酒店的数据
+     * Get the first number Macau hotel names and prices
+     * @param number Number of hotel records to retrieve
      * @return
      * @throws IOException
      */
     public static Map<String, String> dataOfAoMen(int number) throws IOException {
-        List<Result> databyCName = HBaseUtil.getDatabyCName("澳门", "t_city_hotels_info", number);
+        List<Result> databyCName = HBaseUtil.getDatabyCName("Macau", "t_city_hotels_info", number);
         Map<String, String> dataByColumn = HBaseUtil.getDataByColumn(databyCName,
                 "hotel_info", "name",
                 "hotel_info", "price");
@@ -32,13 +32,13 @@ public class chartsData {
     }
 
     /**
-     * 获取前number个香港酒店名称和价格
-     * @param number 指定获取几个酒店的数据
+     * Get the first number Hong Kong hotel names and prices
+     * @param number Number of hotel records to retrieve
      * @return
      * @throws IOException
      */
     public static Map<String, String> dataOfHongKong(int number) throws IOException {
-        List<Result> databyCName = HBaseUtil.getDatabyCName("香港", "t_city_hotels_info", number);
+        List<Result> databyCName = HBaseUtil.getDatabyCName("Hong Kong", "t_city_hotels_info", number);
         Map<String, String> dataByColumn = HBaseUtil.getDataByColumn(databyCName,
                 "hotel_info", "name",
                 "hotel_info", "price");
@@ -46,7 +46,7 @@ public class chartsData {
     }
 
     /**
-     * 获取各城市的酒店平均价格
+     * Get the average hotel price for each city
      * @return
      * @throws Exception
      */

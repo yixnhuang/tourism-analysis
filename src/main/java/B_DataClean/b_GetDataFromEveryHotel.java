@@ -10,7 +10,7 @@ import pojo.Hotel;
 import java.io.*;
 
 /**
- * 获取每一个酒店的信息并注入到hotel实体
+ * Extract each hotel record and populate a Hotel object
  */
 public class b_GetDataFromEveryHotel {
 
@@ -65,7 +65,7 @@ public class b_GetDataFromEveryHotel {
     public static void main(String[] args) {
         String hotelResult = b_GetDataFromEveryHotel.getHotelListString("http://hotels.ctrip.com/Domestic/Tool/AjaxHotelList.aspx");
         List<Hotel> hotels = b_GetDataFromEveryHotel.getHotle(hotelResult);
-        System.out.println("北京市酒店个数："+hotels.size());
+        System.out.println("Number of hotels in Beijing: "+hotels.size());
         for (int i = 0; i < hotels.size(); i++) {
             System.out.println(hotels.get(i));
             System.out.println("--------------");

@@ -12,7 +12,7 @@ public class Hotel {
 
     private String name;
     /**
-     * 最低价格信息
+     * Lowest-price information
      */
     private double price;
 
@@ -29,12 +29,12 @@ public class Hotel {
     private double score;
 
     /**
-     * 点评分数
+     * Review score
      */
     private int dpscore;
 
     /**
-     * 点评数量
+     * Review count
      */
     private int dpcount;
 
@@ -47,7 +47,7 @@ public class Hotel {
     private boolean isSingleRec;
 
     /**
-     * 采集时间
+     * Collection time
      */
     private long collectionTime;
 

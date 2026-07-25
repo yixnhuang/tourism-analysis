@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
-	<!-- 引入 echarts.js -->
+	<!-- Load echarts.js -->
 	<script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
 	<style type="text/css">
 		*{
@@ -24,7 +24,7 @@
 </head>
 <body>
 <div class="main">
-	<h1 align="center">携程网数据分析(部分)</h1>
+	<h1 align="center">Travel Platform Data Analysis</h1>
 	<br />
 
 	<div class="quarter-div" id="hongkong_hotel">
@@ -35,7 +35,7 @@
 
 			option = {
 				title: {
-					text: '香港部分酒店价格分布'
+					text: 'Hong Kong Hotel Price Distribution'
 				},
 				tooltip: {
 					trigger: 'axis',
@@ -44,7 +44,7 @@
 					}
 				},
 				legend: {
-					data: ['酒店价格']
+					data: ['Hotel Price']
 				},
 				grid: {
 					left: '3%',
@@ -58,13 +58,13 @@
 				},
 				yAxis: {
 					type: 'category',
-					data: ['香港中环石板街酒店', '香港百乐宾馆酒店', '香港美利酒店', '香港大都酒店', '香港逸酒店',
-						'香港海汇酒店','香港星星宾馆','香港珀荟酒店','悦品酒店','香港皇悦卓越酒店','海洋公园万豪酒店',
-						'平均价格']
+					data: ['Hong Kong Hotel 1', 'Hong Kong Hotel 2', 'Hong Kong Hotel 3', 'Hong Kong Hotel 4', 'Hong Kong Hotel 5',
+						'Hong Kong Hotel 6','Hong Kong Hotel 7','Hong Kong Hotel 8','Hong Kong Hotel 9','Hong Kong Hotel 10','Hong Kong Hotel 11',
+						'Average Price']
 				},
 				series: [
 					{
-						name: '酒店价格',
+						name: 'Hotel Price',
 						type: 'bar',
 						data: [1789.0,360.0,2318.0,472.0,528.0,1215.0,509.0,628.0,241.0,1259.0,1403.0,1145]
 					}
@@ -82,7 +82,7 @@
 
 			option = {
 				title: {
-					text: '澳门部分酒店价格分布'
+					text: 'Macau Hotel Price Distribution'
 				},
 				tooltip: {
 					trigger: 'axis',
@@ -91,7 +91,7 @@
 					}
 				},
 				legend: {
-					data: ['酒店价格']
+					data: ['Hotel Price']
 				},
 				grid: {
 					left: '3%',
@@ -105,13 +105,13 @@
 				},
 				yAxis: {
 					type: 'category',
-					data: ['澳门镇兴宾馆', '澳门港湾大酒店', '澳门罗斯福酒店', '澳门万事发酒店', '澳门皇庭海景酒店',
-						'澳门东亚酒店','澳门凯旋门酒店','澳门濠江酒店','澳门华都酒店','澳门东京别墅','澳门回力酒店',
-						'平均价格']
+					data: ['Macau Hotel 1', 'Macau Hotel 2', 'Macau Hotel 3', 'Macau Hotel 4', 'Macau Hotel 5',
+						'Macau Hotel 6','Macau Hotel 7','Macau Hotel 8','Macau Hotel 9','Macau Hotel 10','Macau Hotel 11',
+						'Average Price']
 				},
 				series: [
 					{
-						name: '酒店价格',
+						name: 'Hotel Price',
 						type: 'bar',
 						data: [286.0,263.0,540.0,407.0,263.0,419.0,1527.0,428.0,446.0,370.0,561.0,797]
 					}
@@ -129,7 +129,7 @@
 
 			option = {
 				title: {
-					text: '酒店平均价格对比',
+					text: 'Average Hotel Price Comparison',
 					left: 'center'
 				},
 				tooltip: {
@@ -141,12 +141,12 @@
 				},
 				series: [
 					{
-						name: '平均价格',
+						name: 'Average Price',
 						type: 'pie',
 						radius: '50%',
 						data: [
-							{value: 797, name: '澳门酒店'},
-							{value: 1145, name: '香港酒店'}
+							{value: 797, name: 'Macau Hotels'},
+							{value: 1145, name: 'Hong Kong Hotels'}
 						],
 						emphasis: {
 							itemStyle: {
@@ -170,7 +170,7 @@
 
 			option = {
 				title: {
-					text: "酒店房型统计",
+					text: "Hotel Room Type Distribution",
 					left: "center",
 				},
 				tooltip: {
@@ -182,7 +182,7 @@
 				},
 				series: [
 					{
-						name: '房间销量',
+						name: 'Room Bookings',
 						type: 'pie',
 						radius: ['33%', '58%'],
 						avoidLabelOverlap: false,
@@ -206,14 +206,14 @@
 							show: false
 						},
 						data: [
-							{value: 957, name: '标准房'},
-							{value: 68, name: '三人客房'},
-							{value: 104, name: '豪华双床客房'},
-							{value: 2, name: '高级大床客房'},
-							{value: 24, name: '豪华双床阳台客房'},
-							{value: 13, name: '丝丽套房'},
-							{value: 55, name: '经济大床客房'},
-							{value: 133, name: '其他'}
+							{value: 957, name: 'Standard Room'},
+							{value: 68, name: 'Triple Room'},
+							{value: 104, name: 'Deluxe Twin Room'},
+							{value: 2, name: 'Superior Queen Room'},
+							{value: 24, name: 'Deluxe Twin Balcony Room'},
+							{value: 13, name: 'Silka Suite'},
+							{value: 55, name: 'Economy Queen Room'},
+							{value: 133, name: 'Other'}
 						]
 					}
 				]

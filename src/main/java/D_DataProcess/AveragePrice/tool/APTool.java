@@ -18,7 +18,7 @@ import org.apache.hadoop.util.Tool;
 public class APTool implements Tool {
     public int run(String[] args) throws Exception {
 
-        //获取job实例
+        //Create the job instance
         Job job = Job.getInstance();
         job.setJarByClass(APTool.class);
 

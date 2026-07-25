@@ -3,7 +3,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class StringUtil {
     /**
-     * 获取字符串中的数字
+     * Extract digits from a string
      * @param str
      * @return
      */

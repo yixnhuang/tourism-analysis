@@ -6,7 +6,7 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 
 /**
- * 抓取携程旅游网的数据
+ * Collect data from the Ctrip travel website
  */
 public class a_GetSourceData {
     public static Document getSourceData() throws IOException {

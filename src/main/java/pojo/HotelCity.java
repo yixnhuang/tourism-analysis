@@ -2,19 +2,19 @@ package pojo;
 
 public class HotelCity {
     /**
-     * 城市Id
+     * City ID
      */
     private String cityId;
     /**
-     * 城市名称
+     * City name
      */
     private String cityName;
     /**
-     * 城市首字母
+     * City initial
      */
     private String headPinyin;
     /**
-     * 城市拼音
+     * City pinyin
      */
     private String pinyin;
 

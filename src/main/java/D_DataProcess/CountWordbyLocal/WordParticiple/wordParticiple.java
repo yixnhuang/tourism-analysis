@@ -24,12 +24,12 @@ public class wordParticiple {
                 String filter = EmojiParser.removeAllEmojis(data);
                 List<Word> segs = WordSegmenter.seg(filter);
                 for (Word seg : segs) {
-                    //判断有没有这个key
+                    //Check whether the key exists
                     if (!targetData.containsKey(seg.getText())) {
-                        //没有 加入seg，并且value设置为1
+                        //Add the segment with a value of 1 when absent
                         targetData.put(seg.getText(), 1);
                     }else {
-                        //有 value+1
+                        //Increment the existing value
                         targetData.put(seg.getText(),targetData.get(seg.getText())+1);
                     }
                 }

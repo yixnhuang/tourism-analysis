@@ -19,7 +19,7 @@ public class Connected {
     static Configuration conf = null;
 
     /**
-     *  读取配置文件的方法
+     *  Read values from the configuration file
      * @param k
      * @return
      * @throws Exception
@@ -43,7 +43,7 @@ public class Connected {
         String slave2WithP = String.format("%s:%s",readProperties("slave2"),port);
 
         conf.set(quorum, String.format("%s,%s,%s",masterWithP,slave1WithP,slave2WithP));
-        //获取hbase连接对象
+        //Get the HBase connection
         connection = ConnectionFactory.createConnection(conf);
         return connection;
     }

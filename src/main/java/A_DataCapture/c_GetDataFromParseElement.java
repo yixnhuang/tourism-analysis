@@ -9,11 +9,11 @@ import org.jsoup.select.Elements;
 import Util.GetDocument;
 
 /**
- * 从解析的元素里获取数据
+ * Extract data from parsed elements
  */
 public class c_GetDataFromParseElement {
 
-    //获取所有链接
+    //Get all links
     public static List<String> getLinks(Document doc) {
         ArrayList<String> list = new ArrayList<>();
         Elements href = doc.select("a[href]");
@@ -23,7 +23,7 @@ public class c_GetDataFromParseElement {
         return list;
     }
 
-    //获取图片
+    //Get images
     public static List<String> getMedia(Document doc) {
         List<String> list = new ArrayList<>();
         Elements src = doc.select("[src]");
@@ -35,7 +35,7 @@ public class c_GetDataFromParseElement {
         return list;
     }
 
-    //获取link[href]链接
+    //Get link[href] references
     public static List<String> getImports(Document doc) {
         ArrayList<String> list = new ArrayList<>();
         Elements href = doc.select("link[href]");
@@ -47,7 +47,7 @@ public class c_GetDataFromParseElement {
 
     public static void main(String[] args) throws IOException {
         String filePath = "src/main/resources/hotel.ctrip.com.txt";
-        //通过filePath文件路径获取Docment对象
+        //Load the Document object from filePath
         Document doc = GetDocument.getDoc(filePath);
         List<String> links = c_GetDataFromParseElement.getLinks(doc);
         List<String> media = c_GetDataFromParseElement.getMedia(doc);

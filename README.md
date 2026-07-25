@@ -1,85 +1,83 @@
-# Tourism Website Big Data Analysis and Application
+# Tourism Data Analysis
 
-## Project Overview
+A Java data-processing project for collecting, cleaning, storing, and analyzing
+hotel information from travel platforms. It demonstrates an end-to-end pipeline
+with Jsoup, HBase, Hadoop MapReduce, and browser-based visualization.
 
-This project focuses on big data analysis and application for tourism websites,
-specifically on scraping, cleaning, storing, analyzing, and visualizing hotel
-data from travel platforms such as Ctrip.
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Complete-success.svg)](#project-status)
+[![Java](https://img.shields.io/badge/Java-8-informational.svg)](#requirements)
 
-The goal is to extract meaningful insights from large-scale unstructured data
-and support data-driven decision-making for travel planning.
+## Overview
 
-This project was developed as part of the Big Data Technology course at
-university.
+This repository explores a tourism-data workflow from HTML collection and
+cleaning through distributed storage and batch analysis. Hotel prices, names,
+ratings, and review text are transformed into structured records that can be
+queried in HBase and summarized with MapReduce jobs.
 
-## System Pipeline
+The project is retained as a completed data-engineering study. Its dependencies
+target an older Java and Hadoop ecosystem, so reproducing the full pipeline
+requires a compatible local or distributed environment.
 
-1. Data Scraping  
-   Uses Jsoup to extract hotel information from tourism websites, including
-   city, hotel name, price, rating, and other attributes.
+## Pipeline
 
-2. Data Cleaning  
-   Processes raw HTML data, removes noise, and structures it for analysis.
+1. **Collection** — Uses Jsoup to parse hotel and destination pages.
+2. **Cleaning** — Converts raw HTML and JSON responses into structured records.
+3. **Storage** — Stores hotel and review data in HBase.
+4. **Analysis** — Calculates statistics such as average city hotel prices and
+   review word frequencies with Hadoop MapReduce.
+5. **Visualization** — Prepares results for ECharts and word-cloud views.
 
-3. Data Storage  
-   Uses HBase for distributed column-based storage.
+## Requirements
 
-4. Data Analysis  
-   Uses Hadoop MapReduce to perform batch analysis, including:
-   - Average hotel price per city
-   - Word frequency analysis on reviews
+- JDK 8
+- Maven
+- Hadoop 2.7.2
+- HBase 1.3.1
+- A configured ZooKeeper/HBase environment
 
-5. Data Visualization  
-   Uses ECharts to build interactive visualizations such as price distribution
-   and city comparisons.
+Install Java dependencies with:
 
-## Technologies Used
+```bash
+mvn dependency:resolve
+```
 
-- Java
-- Jsoup
-- Hadoop MapReduce
-- HBase
-- ECharts
+The existing Maven configuration contains a machine-specific JDK tools path.
+Adjust `pom.xml` for the local JDK installation before building.
 
-## Purpose
+## Project Structure
 
-This repository was developed as a coursework project for learning,
-demonstration, and portfolio purposes.
+```text
+src/main/java/
+├── A_DataCapture/    # Source collection and parsing
+├── B_DataClean/      # HTML and record cleaning
+├── C_DataToHbase/    # HBase persistence
+├── D_DataProcess/    # MapReduce and local analysis
+├── F_ChartsData/     # Visualization data preparation
+└── Util/             # HBase and document utilities
+```
 
-The source code is shared to document the project and may be reused under
-the terms of the MIT License.
+## Data and Third-Party Content
 
-## Data and Third-Party Content Notice
+This project may reference or process data from third-party travel platforms.
+Website content, trademarks, datasets, course materials, and external resources
+remain under their respective rights and are not covered by this repository's
+license. Users are responsible for applicable terms of service, data policies,
+and laws when collecting or using external data.
 
-This repository may reference or process data from third-party travel
-platforms. Any third-party data, website content, trademarks, course materials,
-and external resources remain the property of their respective owners and are
-not covered by this repository's license.
+## Project Status
 
-Users are responsible for complying with applicable terms of service, data
-usage policies, and laws when collecting or using external data.
+Complete. The repository is preserved for educational and portfolio reference;
+it is not under active development.
 
 ## License
 
 Copyright 2025 Yixuan Huang
 
-This project is licensed under the MIT License.
-See the [LICENSE](LICENSE) file for details.
+The original code in this repository is distributed under the [MIT License](LICENSE).
+Third-party content and data remain under their respective terms.
 
-Unless otherwise stated, this license applies only to the original code
-written by the author. Course materials, datasets, scraped data, third-party
-libraries, website content, and external resources remain under their
-respective rights and licenses.
+## Contact
 
-## Attribution
-
-The MIT License requires preservation of the copyright and license notices.
-
-Additional visible attribution is appreciated:
-
-> Based on work by Yixuan Huang
-
-## Author
-
-Yixuan Huang  
-Email: `yixnhuang@gmail.com`
+- Website: [yixuanhuang.com](https://yixuanhuang.com)
+- Email: [yixnhuang@gmail.com](mailto:yixnhuang@gmail.com)

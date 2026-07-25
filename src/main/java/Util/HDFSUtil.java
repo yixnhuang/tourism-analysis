@@ -14,7 +14,7 @@ public class HDFSUtil {
 
     private static void openFS() {
         try {
-            fs = Connected.getHDFS();//获取hbase连接
+            fs = Connected.getHDFS();//Get the HBase connection
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -29,10 +29,10 @@ public class HDFSUtil {
     }
 
     /**
-     * 上传本地文件到HDFS
+     * Upload a local file to HDFS
      *
-     * @param localFile  本地文件路径
-     * @param remoteFile 要传到HDFS上的目标路径
+     * @param localFile  Local file path
+     * @param remoteFile Destination path in HDFS
      * @throws IOException
      */
     public static void uploadFile(Path localFile, Path remoteFile) throws IOException {
@@ -42,7 +42,7 @@ public class HDFSUtil {
     }
 
     /**
-     * 从HDFS下载文件到本地
+     * Download a file from HDFS
      * @param localFile
      * @param remoteFile
      * @throws IOException
@@ -54,7 +54,7 @@ public class HDFSUtil {
     }
 
     /**
-     * 读取文件内容
+     * Read file contents
      * @param targetPath
      * @throws IOException
      */
@@ -66,9 +66,9 @@ public class HDFSUtil {
     }
 
     /**
-     * 文件重命名
-     * @param absolutePath 要更改的文件的绝对路径
-     * @param newName   要改成什么名字
+     * Rename a file
+     * @param absolutePath Absolute path of the file to rename
+     * @param newName   New file name
      * @throws IOException
      */
     public static void renameFile(Path absolutePath,String newName) throws IOException {
@@ -87,9 +87,9 @@ public class HDFSUtil {
         closeFS();
     }
     /**
-     * 遍历指定目录下的文件并打印出来
+     * List and print files in the specified directory
      *
-     * @param targetPath 目标路径
+     * @param targetPath Target path
      * @throws IOException
      */
     public static void listFiles(Path targetPath) throws IOException {
@@ -103,13 +103,13 @@ public class HDFSUtil {
         }
 
         for (FileStatus f : fss) {
-            //如果是文件夹
+            //Handle a directory
             if (f.isDirectory()) {
                 for (int i = 0; i < f.getPath().depth(); i++)
                     System.out.print("-");
                 listFiles(f.getPath());
             }
-            //如果是文件
+            //Handle a file
             if (f.isFile()) {
                 for (int i = 0; i < f.getPath().depth(); i++)
                     System.out.print("-");
@@ -121,10 +121,10 @@ public class HDFSUtil {
     }
 
     /**
-     * 创建文件
+     * Create a file
      *
-     * @param targetPath 目标路径
-     * @param recursive  是否递归创建
+     * @param targetPath Target path
+     * @param recursive  Whether to create parent directories recursively
      * @throws IOException
      */
     public static void mkFile(Path targetPath, boolean recursive) throws IOException {
@@ -132,7 +132,7 @@ public class HDFSUtil {
         String src = targetPath.toString();
         String[] split = src.split("/");
         if (!split[0].equals("")) {
-            System.out.println("路径错误!");
+            System.out.println("Invalid path!");
         } else {
             StringBuilder sb = new StringBuilder();
             Path newsrc = null;
@@ -140,10 +140,10 @@ public class HDFSUtil {
                 sb.append("/").append(split[i]);
                 newsrc = new Path(sb.toString());
 
-                if (recursive) {  //是否允许递归创建
-                    //判断这个文件或者目录是否存在
+                if (recursive) {  //Whether recursive creation is allowed
+                    //Check whether the file or directory exists
                     if (!fs.exists(newsrc)) {
-                        //判断是不是最后一个，如果是，就创建文件，不是就创建文件夹
+                        //Create a file for the final segment and directories for earlier segments
                         if (i == split.length - 1) {
                             fs.create(newsrc);
                         } else {
@@ -157,9 +157,9 @@ public class HDFSUtil {
     }
 
     /**
-     * 创建文件夹
+     * Create a directory
      *
-     * @param targetPath 目标路径
+     * @param targetPath Target path
      * @throws IOException
      */
     public static void mkDirectory(Path targetPath) throws IOException {
@@ -169,18 +169,18 @@ public class HDFSUtil {
     }
 
     /**
-     * 删除文件或者文件夹
-     * @param targetPath 目标路径
-     * @param recursive 是否递归删除
+     * Delete a file or directory
+     * @param targetPath Target path
+     * @param recursive Whether to delete recursively
      * @throws IOException
      */
     public static void delete(Path targetPath, boolean recursive) throws IOException {
         openFS();
-        //判断是否存在
+        //Check whether the target exists
         if (fs.exists(targetPath)) {
             fs.delete(targetPath, recursive);
         }else {
-            System.out.println("目标路径不存在！");
+            System.out.println("The target path does not exist!");
         }
         closeFS();
     }

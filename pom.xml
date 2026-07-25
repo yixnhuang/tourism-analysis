@@ -17,7 +17,7 @@
     </properties>
     <dependencies>
 
-<!--功能依赖-->
+<!--Functional dependencies-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

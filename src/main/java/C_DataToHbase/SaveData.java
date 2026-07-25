@@ -18,14 +18,14 @@ public class SaveData {
 
 
     /**
-     * 获取并保存酒店和城市数据
+     * Retrieve and save hotel and city data
      */
     public static void saveCityAndHotelInfo() throws Exception {
         HBaseUtil.createTable("t_city_hotels_info", new String[]{"cityInfo", "hotel_info"});
 
         List<Put> puts = new ArrayList<>();
 
-        // 添加数据
+        // Add data
         InputStream resourceAsStream = SaveData.class.getClassLoader().getResourceAsStream("aomen.txt");
         String readFileToString = IOUtils.toString(resourceAsStream, "UTF-8");
         List<Hotel> parseArray = JSONObject.parseArray(readFileToString, Hotel.class);
@@ -38,12 +38,12 @@ public class SaveData {
             String cityId = hotel.getCity_id();
             String hotelId = hotel.getId();
             Put put = new Put(Bytes.toBytes(cityId + "_" + hotelId));
-            // 添加city数据
+            // Add city data
             put.addColumn(Bytes.toBytes("cityInfo"), Bytes.toBytes("cityId"), Bytes.toBytes(cityId));
             put.addColumn(Bytes.toBytes("cityInfo"), Bytes.toBytes("cityName"),Bytes.toBytes(hotel.getCity_name()));
             put.addColumn(Bytes.toBytes("cityInfo"), Bytes.toBytes("pinyin"), Bytes.toBytes(hotel.getPinyin()));
             put.addColumn(Bytes.toBytes("cityInfo"), Bytes.toBytes("collectionTime"),Bytes.toBytes(hotel.getCollectionTime()));
-            // 添加hotel数据
+            // Add hotel data
             put.addColumn(Bytes.toBytes("hotel_info"), Bytes.toBytes("id"), Bytes.toBytes(hotel.getId()));
             put.addColumn(Bytes.toBytes("hotel_info"), Bytes.toBytes("name"), Bytes.toBytes(hotel.getName()));
             put.addColumn(Bytes.toBytes("hotel_info"), Bytes.toBytes("price"), Bytes.toBytes(String.valueOf(hotel.getPrice())));
@@ -61,31 +61,31 @@ public class SaveData {
 
             puts.add(put);
         }
-        // 批量保存数据
+        // Save data in batches
         HBaseUtil.putDataByTable("t_city_hotels_info", puts);
     }
 
     /**
-     * 获取和保存酒店的评论数据
+     * Retrieve and save hotel review data
      */
     public static void saveCommentInfo() throws Exception {
 
-        // 创建评论表
+        // Create the review table
             HBaseUtil.createTable("t_hotel_comment", new String[] { "hotel_info", "comment_info" });
 
             InputStream resourceAsStream = SaveData.class.getClassLoader().getResourceAsStream("comment.txt");
             String readFileToString = IOUtils.toString(resourceAsStream, "UTF-8");
             List<HotelComment> otherCommentListByPage = JSONObject.parseArray(readFileToString, HotelComment.class);
-            // 获取数据
+            // Retrieve data
             List<Put> puts = new ArrayList<>();
-            // 定义Put对象
+            // Create a Put object
             for (HotelComment comment : otherCommentListByPage) {
 
                 Put put = new Put((comment.getHotel_id()  + "_" + comment.getId()).getBytes());
 
                 put.addColumn("hotel_info".getBytes(), "hotel_name".getBytes(),comment.getHotel_name().getBytes());
                 put.addColumn("hotel_info".getBytes(), "hotel_id".getBytes(), comment.getHotel_id().getBytes());
-                // 数据量很大在这里只保存用作分析的数据
+                // Store only the fields required for analysis because the source is large
                 put.addColumn("comment_info".getBytes(), "id".getBytes(), Bytes.toBytes(String.valueOf(comment.getId())));
                 put.addColumn("comment_info".getBytes(), "baseRoomId".getBytes(), Bytes.toBytes(String.valueOf(comment.getBaseRoomId())));
                 if (comment.getBaseRoomId() != -1 && comment.getBaseRoomName() != null) {
@@ -100,7 +100,7 @@ public class SaveData {
 
                 puts.add(put);
             }
-            // 上传数据
+            // Upload data
             HBaseUtil.putDataByTable("t_hotel_comment", puts);
     }
 }

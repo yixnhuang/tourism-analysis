@@ -14,7 +14,7 @@ public class HBaseUtil {
 
     private static void startConn() {
         try {
-            conn = Connected.getHbase();  //获取hbase连接
+            conn = Connected.getHbase();  //Get the HBase connection
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -32,18 +32,18 @@ public class HBaseUtil {
 //DDL
 
     /**
-     * 创建表
+     * Create a table
      *
-     * @param tableName   表名
-     * @param columnNames 列族的动态数组
+     * @param tableName   Table name
+     * @param columnNames Variable-length array of column families
      * @throws Exception
      */
     public static void createTable(String tableName, String... columnNames) throws IOException {
         startConn();
-        //获取表对象操作
+        //Get the table administration object
         Admin admin = conn.getAdmin();
         TableName tableNameObj = TableName.valueOf(Bytes.toBytes(tableName));
-        //判断表是否为空
+        //Check whether the table exists
         if (tableName != null && !tableName.isEmpty()) {
 
             if (!admin.tableExists(tableNameObj)) {
@@ -58,9 +58,9 @@ public class HBaseUtil {
     }
 
     /**
-     * 刪除表
+     * Delete a table
      *
-     * @param tableName 表名
+     * @param tableName Table name
      * @throws Exception
      */
     public static void deleteTable(String tableName) throws Exception {
@@ -75,7 +75,7 @@ public class HBaseUtil {
     }
 
     /**
-     * 列出所有表
+     * List all tables
      *
      * @return
      * @throws IOException
@@ -98,7 +98,7 @@ public class HBaseUtil {
 //DML
 
     /**
-     * 删除指定行键数据
+     * Delete data for the specified row key
      *
      * @param tablename
      * @param rowkey
@@ -114,12 +114,12 @@ public class HBaseUtil {
     }
 
     /**
-     *  根据数据源将结果存到map里
-     * @param sourceResults 数据源
-     * @param familyk   要查询的k的列族
-     * @param columnk   要查询的k的列名
-     * @param familyv   要查询的v的列族
-     * @param columnv   要查询的v的列名
+     *  Store source results in a map
+     * @param sourceResults Source results
+     * @param familyk   Column family for the map key
+     * @param columnk   Column name for the map key
+     * @param familyv   Column family for the map value
+     * @param columnv   Column name for the map value
      * @return
      * @throws IOException
      */
@@ -147,7 +147,7 @@ public class HBaseUtil {
     }
 
     /**
-     *  查询指定城市的result和要查询的长度
+     *  Query results for a city with a result limit
      * @param cityName
      * @param tablename
      * @param dataLength
@@ -176,7 +176,7 @@ public class HBaseUtil {
     }
 
     /**
-     * 删除指定列
+     * Delete the specified column
      *
      * @param tablename
      * @param rowkey
@@ -199,7 +199,7 @@ public class HBaseUtil {
     }
 
     /**
-     * 通过rowkey删除数据
+     * Delete data by row key
      *
      * @param tablename
      * @param rowkey
@@ -216,11 +216,11 @@ public class HBaseUtil {
     }
 
     /**
-     * 往指定表添加数据
+     * Add data to the specified table
      *
-     * @param tablename 表名
-     * @param puts      需要添加的数据
-     * @return long 返回执行时间
+     * @param tablename Table name
+     * @param puts      Put objects to add
+     * @return long Return the execution time
      * @throws IOException
      */
     public static long putDataByTable(String tablename, List<Put> puts) throws Exception {
@@ -235,12 +235,12 @@ public class HBaseUtil {
             closeConn();
         }
 
-        return System.currentTimeMillis() - currentTime;  //返回插入数据花费的时间(毫秒)
+        return System.currentTimeMillis() - currentTime;  //Return the insertion time in milliseconds
     }
 
 
     /**
-     * 扫描表
+     * Scan a table
      *
      * @param tName
      * @throws Exception
@@ -281,7 +281,7 @@ public class HBaseUtil {
     }
 
     /**
-     * 根据行键获取数据
+     * Get data by row key
      *
      * @param tablename
      * @param rowkey
@@ -301,7 +301,7 @@ public class HBaseUtil {
     }
 
     /**
-     * 打印输出Cells
+     * Print cells
      *
      * @param cells
      * @return
@@ -334,7 +334,7 @@ public class HBaseUtil {
 
 
     /**
-     * 行个数
+     * Row count
      *
      * @param tName
      * @return

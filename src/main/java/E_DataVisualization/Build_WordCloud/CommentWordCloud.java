@@ -28,7 +28,7 @@ public class CommentWordCloud {
         Connection conn = Connected.getHbase();
 
 
-        //1.读取Hbase表中数据显示
+        //1.Read data from the HBase table
         TableName tableName = TableName.valueOf(Bytes.toBytes("CountWord"));
         Table table = conn.getTable(tableName);
         Scan scan = new Scan();
@@ -43,11 +43,11 @@ public class CommentWordCloud {
                 words.add(wordFrequency);
             }
         }
-        //2.生成并渲染图片
+        //2.Generate and render the image
         Dimension dimension = new Dimension(500, 312);
         WordCloud wordCloud = new WordCloud(dimension, CollisionMode.PIXEL_PERFECT);
         wordCloud.setPadding(2);
-        Font font = new Font("宋体", 2, 24);
+        Font font = new Font("SimSun", 2, 24);
         wordCloud.setKumoFont(new KumoFont(font));
         wordCloud.setColorPalette(new LinearGradientColorPalette(Color.RED, Color.BLUE, Color.GREEN, 30, 30));
         wordCloud.setBackgroundColor(Color.WHITE);

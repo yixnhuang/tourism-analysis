@@ -20,7 +20,7 @@ public class HttpUtil {
         try {
             URL url = new URL(getUrl(params, urlStr));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            // 设置通用的请求属性
+            // Set common request headers
             connection.setRequestProperty("accept", "*/*");
             connection.setRequestProperty("connection", "Keep-Alive");
             connection.setRequestProperty("user-agent","Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
@@ -35,7 +35,7 @@ public class HttpUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // 使用finally块来关闭输入流
+        // Close the input stream in the finally block
         finally {
             try {
                 if (reader != null) {
@@ -51,7 +51,7 @@ public class HttpUtil {
     public String httpPost(String urlStr, HashMap<String, String> params){
         StringBuffer sb = new StringBuffer();
         try {
-            //创建连接
+            //Create the connection
             URL url = new URL(urlStr);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoOutput(true);
@@ -64,12 +64,12 @@ public class HttpUtil {
             // head
             connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
             connection.connect();
-            //POST请求
+            //Send the POST request
             DataOutputStream out = new DataOutputStream(connection.getOutputStream());
-            out.write(getBodyParams(params).getBytes("utf-8")); // 需指定编码格式，否则中文无法发送
+            out.write(getBodyParams(params).getBytes("utf-8")); // Specify an encoding so non-ASCII text is transmitted correctly
             out.flush();
             out.close();
-            //读取响应
+            //Read the response
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String lines;
             while ((lines = reader.readLine()) != null) {
@@ -77,7 +77,7 @@ public class HttpUtil {
                 sb.append(lines);
             }
             reader.close();
-            // 断开连接
+            // Disconnect
             connection.disconnect();
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,13 +86,13 @@ public class HttpUtil {
     }
 
     /**
-     * 拼接POST请求参数
+     * Build POST request parameters
      * @param params
      * @return
      */
     private String getBodyParams(HashMap<String, String> params) {
         StringBuffer sb = new StringBuffer();
-        // 添加url参数
+        // Add URL parameters
         if (params != null && params.size() > 0) {
             try {
                 Iterator<Entry<String, String>> entryKeyIterator  = params.entrySet().iterator();
@@ -115,13 +115,13 @@ public class HttpUtil {
     }
 
     /**
-     * 拼接GET请求参数
+     * Build GET request parameters
      * @param params
      * @param url
      * @return
      */
     private String getUrl(Map<String, String> params, String url) {
-        // 添加url参数
+        // Add URL parameters
         if (params != null) {
             Iterator<String> it = params.keySet().iterator();
             StringBuffer sb = null;
