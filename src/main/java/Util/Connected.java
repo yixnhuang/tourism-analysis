@@ -12,7 +12,7 @@ import java.net.URI;
 import java.util.Properties;
 
 /**
- * @author GCJL
+ * @author Yixuan Huang
  * @date 2021/4/27 13:00
  */
 public class Connected {

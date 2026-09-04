@@ -13,7 +13,7 @@ import java.util.Map;
 
 
 /**
- * @author GCJL
+ * @author Yixuan Huang
  * @date 2021/5/7 22:27
  */
 public class chartsData {

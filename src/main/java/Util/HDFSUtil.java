@@ -6,7 +6,7 @@ import org.apache.hadoop.io.IOUtils;
 import java.io.IOException;
 
 /**
- * @author GCJL
+ * @author Yixuan Huang
  * @date 2021/5/6 13:44
  */
 public class HDFSUtil {

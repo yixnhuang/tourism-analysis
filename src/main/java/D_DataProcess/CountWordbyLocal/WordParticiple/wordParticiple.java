@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author GCJL
+ * @author Yixuan Huang
  * @date 2021/5/7 15:11
  */
 public class wordParticiple {

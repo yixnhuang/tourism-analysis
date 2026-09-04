@@ -4,7 +4,7 @@ import D_DataProcess.CountWord.tool.CWTool;
 import org.apache.hadoop.util.ToolRunner;
 
 /**
- * @author GCJL
+ * @author Yixuan Huang
  * @date 2021/4/28 14:18
  */
 public class Run {

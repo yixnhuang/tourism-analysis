@@ -9,7 +9,7 @@ import org.apache.hadoop.io.DoubleWritable;
 import java.io.IOException;
 
 /**
- * @author GCJL
+ * @author Yixuan Huang
  * @date 2021/4/28 14:25
  */
 public class ApReducer extends TableReducer<ImmutableBytesWritable, DoubleWritable, ImmutableBytesWritable> {

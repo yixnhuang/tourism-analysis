@@ -12,7 +12,7 @@ import org.apache.hadoop.mapreduce.JobStatus;
 import org.apache.hadoop.util.Tool;
 
 /**
- * @author GCJL
+ * @author Yixuan Huang
  * @date 2021/4/28 14:19
  */
 public class CWTool implements Tool {

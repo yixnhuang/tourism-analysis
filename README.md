@@ -1,86 +1,90 @@
 # Tourism Data Analysis
 
-A Java data-processing project for collecting, cleaning, storing, and analyzing
-hotel information from travel platforms. It demonstrates an end-to-end pipeline
-with Jsoup, HBase, Hadoop MapReduce, and browser-based visualization.
+A Java batch pipeline over hotel listings and reviews: scrape with Jsoup, clean
+into structured records, persist to HBase, aggregate with Hadoop MapReduce, and
+prepare the results for ECharts and a word cloud. A completed data-engineering
+study.
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Complete-success.svg)](#project-status)
+[![Status](https://img.shields.io/badge/Status-Archived-lightgrey.svg)](#project-status)
 [![Java](https://img.shields.io/badge/Java-8-informational.svg)](#requirements)
+[![Stack](https://img.shields.io/badge/Stack-Hadoop%202.7%20%2B%20HBase%201.3-orange.svg)](#requirements)
 
 ## Overview
 
-This repository explores a tourism-data workflow from HTML collection and
-cleaning through distributed storage and batch analysis. Hotel prices, names,
-ratings, and review text are transformed into structured records that can be
-queried in HBase and summarized with MapReduce jobs.
+![Five stages A to F, and the HBase schema they hand data through](figures/pipeline.svg)
 
-The project is retained as a completed data-engineering study. Its dependencies
-target an older Java and Hadoop ecosystem, so reproducing the full pipeline
-requires a compatible local or distributed environment.
+*The pipeline and its storage schema. The composite row key is what turns a per-city query into a range scan.*
 
-## Pipeline
+The pipeline has five stages, each in its own top-level package, named `A_` to
+`F_` so the order is visible in the directory listing:
 
-1. **Collection** — Uses Jsoup to parse hotel and destination pages.
-2. **Cleaning** — Converts raw HTML and JSON responses into structured records.
-3. **Storage** — Stores hotel and review data in HBase.
-4. **Analysis** — Calculates statistics such as average city hotel prices and
-   review word frequencies with Hadoop MapReduce.
-5. **Visualization** — Prepares results for ECharts and word-cloud views.
+```text
+A_DataCapture  →  B_DataClean  →  C_DataToHbase  →  D_DataProcess  →  E/F_Visualization
+   Jsoup            parse to        HBase            MapReduce         word cloud +
+   scrape           records         tables           jobs              ECharts data
+```
+
+Two analyses are computed: **average hotel price per city**, and **word
+frequency over review text**. The word-frequency job exists in two forms — a
+distributed MapReduce version and a local single-machine version — which makes
+the repository a reasonable side-by-side of the two.
+
+## Repository layout
+
+```text
+src/main/java/
+├── A_DataCapture/    # Jsoup collection and HTML parsing
+├── B_DataClean/      # hotel and review record extraction
+├── C_DataToHbase/    # HBase persistence + internal POJOs
+├── D_DataProcess/    # AveragePrice, CountWord, CountWordbyLocal
+├── E_DataVisualization/  # word cloud generation
+├── F_ChartsData/     # chart data preparation
+├── Util/             # HBase, HDFS, HTTP, Jsoup and string helpers
+└── pojo/             # Hotel, HotelCity, HotelComment, HotelInfo
+src/main/resources/
+├── hadoop.properties # cluster hostnames and ZooKeeper port
+├── SourceImgs/       # word-cloud mask image
+└── TargetImgs/       # word-cloud output, written by the visualization stage
+```
 
 ## Requirements
 
 - JDK 8
 - Maven
-- Hadoop 2.7.2
-- HBase 1.3.1
-- A configured ZooKeeper/HBase environment
+- Hadoop 2.7.2 and HBase 1.3.1, with a reachable ZooKeeper quorum
 
-Install Java dependencies with:
+`src/main/resources/hadoop.properties` names the cluster hosts
+(`hadoop1`, `hadoop2`, `hadoop3`) and expects HDFS at `hdfs://hadoop1:9000`.
+Change them for your own cluster.
 
-```bash
-mvn dependency:resolve
-```
+`pom.xml` resolves `tools.jar` through `${java.home}`, so the build does not
+depend on a specific install path.
 
-The existing Maven configuration contains a machine-specific JDK tools path.
-Adjust `pom.xml` for the local JDK installation before building.
+## Data and third-party content
 
-## Project Structure
+The collection stage targets a commercial travel platform. Website content,
+trademarks, listings and review text belong to that platform and its users, and
+are not covered by this repository's license. Anyone running the collection stage
+is responsible for the site's terms of service, applicable data-protection law,
+and rate limiting.
 
-```text
-src/main/java/
-├── A_DataCapture/    # Source collection and parsing
-├── B_DataClean/      # HTML and record cleaning
-├── C_DataToHbase/    # HBase persistence
-├── D_DataProcess/    # MapReduce and local analysis
-├── F_ChartsData/     # Visualization data preparation
-└── Util/             # HBase and document utilities
-```
-
-## Data and Third-Party Content
-
-This project may reference or process data from third-party travel platforms.
-Website content, trademarks, datasets, course materials, and external resources
-remain under their respective rights and are not covered by this repository's
-license. Users are responsible for applicable terms of service, data policies,
-and laws when collecting or using external data.
+No scraped data is committed to this repository.
 
 ## Project Status
 
-Complete. The repository is preserved for educational and portfolio reference;
-it is not under active development.
+Archived. A finished study of a Hadoop batch pipeline, kept as a record.
 
 ## License
 
 Copyright 2025 Yixuan Huang
 
-The original code in this repository is distributed under the [MIT License](LICENSE).
-Third-party content and data remain under their respective terms.
+The original code in this repository is distributed under the
+[MIT License](LICENSE). Hadoop, HBase, Jsoup and all other dependencies remain
+under their own licenses; scraped content remains under the rights of its
+source.
 
 ## Contact
-
-For questions or collaboration, use the contact details below or consult the
-website for the latest information.
 
 - Website: [yixuanhuang.com](https://yixuanhuang.com)
 - Email: [yixnhuang@gmail.com](mailto:yixnhuang@gmail.com)

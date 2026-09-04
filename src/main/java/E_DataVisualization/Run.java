@@ -5,7 +5,7 @@ import com.kennycason.kumo.WordCloud;
 
 
 /**
- * @author GCJL
+ * @author Yixuan Huang
  * @date 2021/5/7 17:05
  */
 public class Run {

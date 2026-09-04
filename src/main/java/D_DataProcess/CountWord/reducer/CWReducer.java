@@ -11,7 +11,7 @@ import org.apache.hadoop.io.Text;
 import java.io.IOException;
 
 /**
- * @author GCJL
+ * @author Yixuan Huang
  * @date 2021/4/28 14:25
  */
 public class CWReducer extends TableReducer<Text, IntWritable, ImmutableBytesWritable> {

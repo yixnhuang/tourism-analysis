@@ -9,7 +9,7 @@ import org.apache.hadoop.io.DoubleWritable;
 import java.io.IOException;
 
 /**
- * @author GCJL
+ * @author Yixuan Huang
  * @date 2021/4/28 14:22
  */
 public class APMapper extends TableMapper<ImmutableBytesWritable, DoubleWritable> {

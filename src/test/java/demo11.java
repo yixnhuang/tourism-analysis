@@ -3,7 +3,7 @@ import Util.HBaseUtil;
 import java.util.List;
 
 /**
- * @author GCJL
+ * @author Yixuan Huang
  * @date 2021/5/7 21:53
  */
 public class demo11 {

@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author GCJL
+ * @author Yixuan Huang
  * @date 2021/5/7 17:20
  */
 public class CommentWordCloud {
