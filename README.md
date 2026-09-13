@@ -5,7 +5,7 @@ into structured records, persist to HBase, aggregate with Hadoop MapReduce, and
 prepare the results for ECharts and a word cloud. A completed data-engineering
 study.
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Archived-lightgrey.svg)](#project-status)
 [![Java](https://img.shields.io/badge/Java-8-informational.svg)](#requirements)
 [![Stack](https://img.shields.io/badge/Stack-Hadoop%202.7%20%2B%20HBase%201.3-orange.svg)](#requirements)
@@ -80,7 +80,7 @@ Archived. A finished study of a Hadoop batch pipeline, kept as a record.
 Copyright 2025 Yixuan Huang
 
 The original code in this repository is distributed under the
-[MIT License](LICENSE). Hadoop, HBase, Jsoup and all other dependencies remain
+[Apache License 2.0](LICENSE). Hadoop, HBase, Jsoup and all other dependencies remain
 under their own licenses; scraped content remains under the rights of its
 source.
 
